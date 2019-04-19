@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 def api(request):
     if request.method == "POST":
         try:
+            print(request.body)
             json_request = json.loads(request.body)
             return parserequest(json_request)
         except json.JSONDecodeError:

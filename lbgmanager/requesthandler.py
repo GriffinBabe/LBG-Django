@@ -43,7 +43,7 @@ def parserequest(request):
         response["events"] = event_elements
         for member in member_list:
             member_dictionary = {"id": str(member.id), "name": str(member.name),
-                                 "responsibility": str(member.responsibility),
+                                 "responsability": str(member.responsibility),
                                  "administator": str(member.administrator)}
             member_elements.append(member_dictionary)
         response["members"] = member_elements
@@ -57,6 +57,7 @@ def parserequest(request):
             user = Member.objects.get(id=user_id)
             if user.hashed_password.upper() == hashlib.sha256(user_pass.encode()).hexdigest().upper():
                 generated_token = generate_token(user)
+                response["request_status"] = "ok"
                 response["token"] = generated_token
                 return HttpResponse(json.dumps(response))
         except (KeyError, Member.DoesNotExist):
