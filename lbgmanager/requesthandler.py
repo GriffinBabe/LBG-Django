@@ -38,13 +38,13 @@ def parserequest(request):
             event_dictionary = {"id": str(event.id), "name": str(event.name), "description": str(event.description),
                                 "date_begin": str(event.date_begin), "date_end": str(event.date_end),
                                 "main_organiser_id": str(event.main_organiser_id), "admins_ids": json.loads(event.admins_ids),
-                                "tasks_ids": json.loads(event.tasks_ids), "orgasiners_ids": json.loads(event.organisers_ids)}
+                                "tasks_ids": json.loads(event.tasks_ids), "organisers_ids": json.loads(event.organisers_ids)}
             event_elements.append(event_dictionary)
         response["events"] = event_elements
         for member in member_list:
             member_dictionary = {"id": str(member.id), "name": str(member.name),
-                                 "responsability": str(member.responsibility),
-                                 "administator": str(member.administrator)}
+                                 "responsibility": str(member.responsibility),
+                                 "administrator": str(member.administrator)}
             member_elements.append(member_dictionary)
         response["members"] = member_elements
         return HttpResponse(json.dumps(response))

@@ -1,0 +1,47 @@
+{
+	"request_status": "ok", 
+
+	"tasks": [
+		{
+			"id": "cleaning_1", 
+			"event_id": "ebec_bnl19", 
+			"name": "Cleaning Office", 
+			"description": "Ordering the office, cleaning the floor, empty the trash...", 
+			"deadline": "2019-04-17 18:00:00+00:00", 
+			"responsibles_ids": ["stefano_do"], "completed": "False"
+		}
+	], 
+	"events": [
+		{
+			"id": "ebec_bnl19", 
+			"name": "Ebec Benelux 2019", 
+			"description": "Come to ebec benelux to work all the day and still don't get free beer :'(", 
+			"date_begin": "2019-04-15 06:00:00+00:00", 
+			"date_end": "2019-04-17 18:00:00+00:00", 
+			"main_organiser_id": "darius_cou", 
+			"admins_ids": ["darius_cou"], 
+			"tasks_ids": ["cleaning_1"], 
+			"orgasiners_ids": ["darius_cou", "stefano_do"]
+		}
+	], 
+	"members": [
+		{
+			"id": "darius_cou", 
+			"name": "Darius Couchard", 
+			"responsability": "VP_PR", 
+			"administator": "True"
+		}, 
+		{
+			"id": "stefano_do", 
+			"name": "Stefano Donne", 
+			"responsability": "PR", 
+			"administator": "True"
+		}, 
+		{
+			"id": "user_test", 
+			"name": "User Test", 
+			"responsability": "None", 
+			"administator": "False"
+		}
+	]
+}
