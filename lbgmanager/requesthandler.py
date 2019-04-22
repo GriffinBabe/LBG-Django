@@ -58,7 +58,7 @@ def parserequest(request):
             if user.hashed_password.upper() == hashlib.sha256(user_pass.encode()).hexdigest().upper():
                 generated_token = generate_token(user)
                 response["request_status"] = "ok"
-                reponse["password"] = "ok"
+                response["password"] = "ok"
                 response["token"] = generated_token
                 return HttpResponse(json.dumps(response))
             else:
@@ -66,10 +66,12 @@ def parserequest(request):
         except (KeyError, Member.DoesNotExist):
             return HttpResponse(json.dumps({"request_status": "ok", "password": "wrong"}))  # Override the response
 
-    def check_token(request):
+    def check_token(request, response):
         try:
-            token = request["token"]
-            user = Member.objects.get(token=token)
+            auth_key = request["auth_key"]
+            member = Member.objects.get(auth_key=auth_key)
+            return HttpResponse(json.dumps({"request_status": "ok", "id": str(member.id), "name": str(member.name),
+                                 "responsibility": str(member.responsibility),"administrator": str(member.administrator)}))
         except (KeyError, Member.DoesNotExist):
             return HttpResponse(json.dumps({"request_status": "wrong_auth"}))
 
@@ -88,5 +90,5 @@ def parserequest(request):
     elif request_type == "get_authentication_key":
         return get_authentication(request, response)
     elif request_type == "check_token":
-        return check_token(request)
+        return check_token(request, response)
 
