@@ -1,2 +1,5 @@
+__pycache__/
 untitled/__pycache__/
 lbgmanager/__pycache__/
+dist/
+build/
